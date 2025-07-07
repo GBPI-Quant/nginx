@@ -1,0 +1,12 @@
+Die Buchstaben c und s in yaml Dateien, stehen für complex und simple
+nginx-s-01.yaml 
+generiert ein nginx mit einem leeren html Ordner. Docker wird mit dem Befehl 
+- docker compose -f nginx-s-01.yaml up -d
+nginx startet auf 8080:80 (Extern, Port auf Host:Intern, Container Port) Port und ist erreichbar über VirtualBox http://localhost:8080 durch weiterleitung und direkt über curl localhost:8080
+Da html Ordner leer ist und die entsprechende Rechte im html Ordner existieren, erscheint im Browser der Fehler, 403 Forbidden
+im html-Ordner  muss ein index.html angelegt werden. Auch die Ordnerberechtigungen müssen angepasst werden:
+- sudo chown -R admn:www-data html
+- vim index.html
+
+
+
