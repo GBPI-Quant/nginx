@@ -3,9 +3,9 @@ version: '3.8'
 services:
   nginx:
     image: nginx:latest
-    container_name: nginx81
+    container_name: nginx82
     ports:
-      - "81:81"
+      - "82:82"
     volumes:
       - ./html1:/usr/share/nginx/html1:ro
-      - ./nginx81.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx82.conf:/etc/nginx/nginx.conf:ro
