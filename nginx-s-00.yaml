@@ -1,9 +1,19 @@
 version: '3.8'
 
 services:
-  nginx:
+  nginx81:
     image: nginx:latest
+    container_name: nginx81
     ports:
-      - "8080:80"
+      - "81:81"  # Host-Port 81 → Container-Port 81 (nginx muss auf Port 81 lauschen)
     volumes:
-      - ./html:/usr/share/nginx/html:ro
+      - ./html1:/usr/share/nginx/html1:ro
+      - ./nginx81.conf:/etc/nginx/nginx.conf:ro  # Nginx muss so konfiguriert sein, dass es auf Port 81 lauscht
+    depends_on:
+      - traefik
+    command: [ "nginx", "-g", "daemon off;" ]
+    restart: unless-stopped
+    networks:
+      - traefik
+
+  

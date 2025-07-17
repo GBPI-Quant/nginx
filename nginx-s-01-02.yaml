@@ -1,24 +1,24 @@
 version: '3.8'
 
 services:
-  nginx1:
+  nginx81:
     image: nginx:latest
-    container_name: nginx_on_81
+    container_name: nginx81
     ports:
-      - "81:80"  # Host port 81 → Container port 80 in container
-    # Note: The port mapping is 81:80, meaning host port 81 maps
-    # to container port 80, which is the default port for Nginx.    
-    volumes:
-      - ./html:/usr/share/nginx/html:ro 
-
-    restart: unless-stopped
-
-  nginx2:
-    image: nginx:latest
-    container_name: nginx_on_82
-    ports:
-      - "82:80"  # Host port 82 → Container port 80 in container
+      - "81:81"  # Host-Port 81 → Container-Port 81
     volumes:
       - ./html1:/usr/share/nginx/html1:ro
+      - ./nginx81.conf:/etc/nginx/nginx.conf:ro
+    command: ["nginx", "-g", "daemon off;"]
     restart: unless-stopped
 
+  nginx82:
+    image: nginx:latest
+    container_name: nginx82
+    ports:
+      - "82:82"  # Host-Port 82 → Container-Port 82
+    volumes:
+      - ./html2:/usr/share/nginx/html2:ro
+      - ./nginx82.conf:/etc/nginx/nginx.conf:ro
+    command: ["nginx", "-g", "daemon off;"]
+    restart: unless-stopped
