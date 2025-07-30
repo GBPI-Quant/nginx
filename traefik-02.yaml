@@ -27,7 +27,7 @@ services:
     command: ["nginx", "-g", "daemon off;"]                                     # Host-Port 8082 → Container-Port 80
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx81.rule=Host(`ng81.localhost`)"  # Traefik leitet Anfragen mit Host=localhost weiter
+      - "traefik.http.routers.nginx81.rule=Host(`pq.ydns.eu`)"  # Traefik leitet Anfragen mit Host=localhost weiter
       - "traefik.http.routers.nginx81.entrypoints=web"
       - "traefik.http.services.nginx81.loadbalancer.server.port=80"
     networks:
