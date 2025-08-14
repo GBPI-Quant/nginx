@@ -5,7 +5,7 @@ services:
     image: nginx:latest
     container_name: nginx81
     ports:
-      - "81:80"
+      - "8081:80"
     volumes:
       - ./html1:/usr/share/nginx/html1:ro
       # - ./nginx81.conf:/etc/nginx/nginx.conf:ro  
